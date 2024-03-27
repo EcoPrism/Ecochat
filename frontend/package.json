@@ -8,6 +8,9 @@
     "build": "tsc && vite build",
     "watch": "tsc && vite build --watch"
   },
+  "engines": {
+    "node": ">=20.0.0"
+  },
   "dependencies": {
     "@fluentui/react": "^8.105.3",
     "@fluentui/react-hooks": "^8.6.29",
