@@ -1,18 +1,26 @@
-import { defineConfig } from "vite";
-import react from "@vitejs/plugin-react";
+import { defineConfig } from 'vite';
+import react from '@vitejs/plugin-react';
+import json from '@rollup/plugin-json'; // Import the plugin
 
-// https://vitejs.dev/config/
 export default defineConfig({
-    plugins: [react()],
-    build: {
-        outDir: "../static",
-        emptyOutDir: true,
-        sourcemap: true
+  plugins: [
+    react(),
+    json(), // Use the @rollup/plugin-json plugin
+  ],
+  build: {
+    outDir: '../build',
+    emptyOutDir: true,
+    sourcemap: true,
+    // Optionally specify a manifest file name and format
+    manifest: true, // Generate manifest file
+  
+ 
+    // Add any other build options as needed
+  },
+  server: {
+    proxy: {
+      '/ask': 'http://localhost:5000',
+      '/chat': 'http://localhost:5000',
     },
-    server: {
-        proxy: {
-            "/ask": "http://localhost:5000",
-            "/chat": "http://localhost:5000"
-        }
-    }
+  },
 });
